@@ -22,7 +22,7 @@ logging.basicConfig(level=logging.os.environ.get('LOG_LEVEL', 'INFO'))
 
 
 def shoot(container):
-    logging.info("BANG! [fragged:%s]" % (container))
+    logging.info("#~> BANG! [fragged:%s]" % (container))
     requests.post(url + '/d', {
         "ids": [container]
     }).json()
@@ -51,7 +51,7 @@ def take_aim():
         #    continue
 
         if t['state'] != 'TASK_RUNNING':
-            logging.info('#~> Player connecting to game')
+            logging.info('#~> Player not joined')
             continue
 
         started = datetime.strptime(t['startedAt'], '%Y-%m-%dT%H:%M:%S.%fZ')
