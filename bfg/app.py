@@ -23,9 +23,9 @@ logging.basicConfig(level=logging.os.environ.get('LOG_LEVEL', 'INFO'))
 
 def shoot(container):
     logging.info("#~> BANG! [fragged:%s]" % (container))
-    requests.post(url + '/d', {
-        "ids": [container]
-    }).json()
+    data = {"ids": [str(container)]}
+    result = requests.post(url + '/delete', json=data).json()
+    logging.info(result)
 
 
 def take_aim():
