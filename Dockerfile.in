@@ -2,7 +2,9 @@ FROM wehkamp/alpine:3.5
 
 ENTRYPOINT ["python", "-m", "app"]
 EXPOSE 5000
-ENV FLASK_APP=/app/bfg/app.py
+ENV FLASK_APP=/app/bfg/app.py \
+    RUNTIME_INTERVAL_SECS=600 \
+    MIN_LIFETIME_SECS=600
 
 RUN LAYER=build \
   && apk add -U python py-pip \
